@@ -10,7 +10,8 @@ describe("CrossMarginTrading.getHoldingAmount", function () {
         const marginTrading = await CrossMarginTrading.deploy(roles.address);
         await marginTrading.deployed();
 
-        const holdingAmounts = await marginTrading.getHoldingAmounts(roles.address);
+        const nonexistAddress = '0x0000000000000000000000000000000000000001';
+        const holdingAmounts = await marginTrading.getHoldingAmounts(nonexistAddress);
 
         expect(holdingAmounts).to.be.a('array');
         expect(holdingAmounts).to.have.lengthOf(2);
